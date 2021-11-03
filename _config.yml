@@ -2,7 +2,7 @@
 title:周大胖的技术博客
 subtitle:记录技术，记录生活点滴
 description: 涉猎的主要编程语言为 Python、Rust、C/C++、领域涵盖爬虫深度学习、图像处理、自然语言处理等
-keywords: "Python, C/C++, 爬虫, 深度学习, 图像处理, 自然语言处理"
+email: 18328062372@163.com
 url: https://Sammul40619.github.io
 avatar: /avatar.jpeg
 paginate: 5
@@ -30,17 +30,9 @@ exclude:
   - not-pure-poole.gemspec
 
 # Optimize Jekyl SEO Tag
-twitter:
-  username: Sammul40619
-  card: summary
+
 logo: logo.png
-social:
-  name: Songzi Vong
-  links:
-    - https://twitter.com/Sammul40619
-    - https://github.com/Sammul40619
-google_site_verification: xxxxx
-lang: en
+
 
 sass:
   sass_dir: _sass
@@ -58,4 +50,4 @@ sass:
 author:
   name: Songzi Vong
   url: https://github.com/Sammul40619/
-  email: zhoupengtao123@gmail.com
+  email: 18328062372@163.com
