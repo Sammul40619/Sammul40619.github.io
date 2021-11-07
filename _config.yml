@@ -1,60 +1,87 @@
-# Setup
-title:'周大胖的技术博客'
-subtitle:'记录技术，记录生活点滴'
-description:'涉猎的主要编程语言为 Python、Rust、C/C++、领域涵盖爬虫深度学习、图像处理、自然语言处理等'
-email:18328062372@163.com
-url:https://Sammul40619.github.io
-avatar:/avatar.jpeg
-cover_image:/bg.jpeg
+# Site settings
+title: '周大胖的技术博客'
+description: '涉猎的主要编程语言为 Python、Rust、C/C++、领域涵盖爬虫深度学习、图像处理、自然语言处理等'
+permalink: ':title:output_ext'
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "https://Sammul40619.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+logo: "/assets/img/branding/MVM-logo-full.svg"
+logo-icon: "/assets/img/branding/MVM-symbol.svg"
+logo-icon-SEO: "/assets/img/branding/MVM-symbol-black.png" # must be a non SVG file
 
-# Gems
+# Night/Dark mode
+# Default mode is "auto", "auto" is for auto nightshift
+# (19:00 - 07:00), "manual" is for manual toggle, and
+# "on/off" is for default on/off.
+#
+# Whatever the user's choice is, it will supersede the
+# default setting of the site and be kept during the
+# visit (session). Only the dark mode setting is "manual",
+# it will be always kept on every visit (i.e. no matter
+# the browser is closed or not)
+night_mode: "auto"
+
+logo-dark: "/assets/img/branding/MVM-logo-full-dark.svg"
+highlight_theme: syntax-base16.monokai.dark # select a dark theme for the code highlighter if needed
+
+# Author settings
+author: Armando Maynez # add your name
+author-pic: Myself_Neon_grey.jpg
+about-author: Engineer, industry executive, research enthusiast. Avid learner with diverse interests in coding, machine learning, artificial intelligence and reinforcement learning. 17+ years of experience working in multinational corporations.
+
+# Contact links
+email: armando.maynez@gmail.com # Add your Email address
+phone: # Add your Phone number
+website: https://amaynez.github.io # Add your website
+linkedin: amaynez # Add your Linkedin handle
+github: amaynez # Add your Github handle
+twitter: '@MvmThe' # Add your Twitter handle
+bandcamp: armandomaynez # Add your Bandcamp username
+
+# Newsletter
+mailchimp: "https://github.us1.list-manage.com/subscribe/post?u=8ece198b3eb260e6838461a60&amp;id=397d90b5f4"
+
+# Disqus
+discus_identifier: amaynez-github-io # Add your discus identifier
+comments_curtain: yes # leave empty to show the disqus embed directly
+
+# Tracker
+analytics: G-R8SZS2YBZK
+fbadmin: ar.maybach
+
+# Paginate
+paginate: 6
+paginate_path: 'page:num'
+words_per_minute: 200
+
+# Build settings
+markdown: kramdown
+mathjax: true
+highlighter: rouge
+compress_html:
+  clippings: all
+  comments: all
+  startings: [html, head, body]
+
+# Outputting
+timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+category_archive:
+  type: liquid
+  path: /categories/
+
+sass:
+  style: compressed
+
 plugins:
-  - jekyll-gist
   - jekyll-paginate
-  - jekyll-seo-tag
   - jekyll-feed
   - jekyll-sitemap
 
-# Optimize Jekyll
-exclude:
-  - .editorconfig
-  - .git
-  - .jekyll-cache
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE.md
-  - README.md
-  - scripts/
-  - not-pure-poole.gemspec
-
-# Optimize Jekyl SEO Tag
-
-logo: logo.png
-
-
-sass:
-  sass_dir: _sass
-  style: :compressed
-
-# Options
-
-# Replace this value and uncomment to enable Google Analytics tracking
-# google_analytics: UA-000000-0
-
-# Replace this value and uncomment to enable Disqus
-# disqus: xxxxxx
-
-# Specify the author for blog posts
 gitalk:
   clientID: f0aaf85ff65877ef4050
   clientSecret: 27ac33e41de0e890c45b33da27e27334f75b6316
   repo: Sammul40619.github.io
   owner: Sammul40619
   
-# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-google_analytics: UA-XXXXXXX-X
-  
-author:
-  name: Songzi Vong
-  url: https://github.com/Sammul40619/
-  email: 18328062372@163.com
+include: [_pages]
+exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock", "package-lock.json", "assets/css/sass/"]
