@@ -2,7 +2,11 @@
 layout: page
 title: About
 ---
+姓名：zpt
+年龄：1992年出生
+性别：男
+毕业学校和专业：西南交通大学，机械工程
+从事行业：教育、金融相关行业
+专业技能：主攻在文档领域内的深度学习算法，譬如OCR，表格识别，文档二值化等
+邮箱：18328062372@163.com / 748597605@qq.com
 
-**Not Pure Poole** is a simple, beautiful, and powerful Jekyll theme for blogs. It is built on [Poole](https://github.com/poole/poole) and [Pure](https://purecss.io/).
-
-For more information about Not Pure Poole, please browse the [README](https://github.com/vszhub/not-pure-poole) file.
