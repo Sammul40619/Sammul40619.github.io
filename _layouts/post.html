@@ -1,44 +1,53 @@
 ---
 layout: default
 ---
-{% include calculate_relative_base.html %}
-{% capture post_url %}{{ relativebase }}{{ page.url }}{% endcapture %}
-{% assign post_url = post_url | replace: "//", "/" %}
-<section class="hidden">
-  <div class="post">
-      <a  class="post-list-title" href="{{ post_url }}">{{ page.title }}</a>
-      {% include post_meta.html type="post-card-meta" %}
-        <div class="post-excerpt">
-            {{ page.content | markdownify | strip_newlines | truncatewords: 100 }}<a class="read-more" href="{{ post_url }}"> read more</a>
-        </div>
+
+<article class="post">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <div class="post-meta">
+    {%- assign date_format = site.date_format | default: "%-d %b %Y" -%}
+    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: date_format }}</time>
+    {%- if page.last_modified_at -%}
+      <span> ~ </span>
+      {%- assign mdate = page.last_modified_at | date_to_xmlschema -%}
+      <time datetime="{{ mdate }}" itemprop="dateModified">
+        {{ mdate | date: date_format }}
+      </time>
+    {%- endif -%}
+    {%- if page.author -%}
+      <span> • </span>
+      {% for author in page.author %}
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          {{ author }}
+        </span>
+        {%- if forloop.last == false %}, {% endif -%}
+      {% endfor %}
+    {%- endif -%}
   </div>
-</section>
-<div class="flex-container transparent">
-  {% include header.html %}
-  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    {% include schema-meta.html %}
-    <div class="page-image">
-      <div class="cover-image" style="background: url('{{ relativebase }}assets/img/{{ page.img }}') center no-repeat; background-size: cover;"></div>
-    </div>
-    <div class="wrapper">
-      <div class="page-content">
-        <div class="header-page">
-          <h1 class="page-title">{{ page.title }}</h1>
-          {% include post_meta.html type="post-page-meta" %}
-        </div>
-        {% include sidebar.html context="post" class="side" id="sidebar" %}
-        {% if page.toc %}{% include sidebar-toc.html %}{% endif %}
-        {% include github-button.html %}
-        {{page.content | markdownify}}
-        {% include sidebar.html context="post" class="inline" id="post-end" %}
-        <div class="separator"></div>
-        {% include author-box.html %}
-        {% include recent-post.html %}
-        {% include newsletter.html %}
-        {% include disqus.html %}
-      </div>
-    </div> <!-- End Wrapper -->
-  </article>
-  {% include search.html %}
-  {% include footer.html %}
-</div>
+
+  {{ content }}
+
+  {% if page.tags %}
+    {% include post-tags.html %}
+  {% endif %}
+
+  {% if jekyll.environment == "production" and site.disqus and page.comments != false %}
+    {% include disqus.html %}
+  {% endif %}
+</article>
+
+{% if site.related_posts != empty %}
+<aside class="related">
+  <h2>Related posts</h2>
+  <ul class="related-posts">
+    {% for post in site.related_posts limit:3 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">
+          {{ post.title }}
+          <small><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time></small>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</aside>
+{% endif %}
